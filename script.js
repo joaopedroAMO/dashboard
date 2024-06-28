@@ -27,8 +27,9 @@ function handleCadastro(event) {
 
     if (file) {
         const reader = new FileReader();
-         reader.onload = function(e) {
+        reader.onload = function(e) {
         document.getElementById("profile-picture").src = e.target.result;
+
         document.getElementById("user-img").src = e.target.result;
         document.getElementById("usuario-img").src = e.target.result;
         cadastrar();
@@ -108,6 +109,7 @@ function abrirMenu() {
             menu.classList.remove('open-animation');
             menu.classList.add('open');
         }, { once: true });
+        menu.style.overflow = "visible";
     } else {
         menu.classList.remove('open-animation');
         menu.classList.add('close-animation');
