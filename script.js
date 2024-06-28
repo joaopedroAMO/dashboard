@@ -95,14 +95,28 @@ function image(event) {
 }
 document.getElementById('profile-picture-input').addEventListener('change', image);
 
-function abrirMenu(){
+function abrirMenu() {
     const menuResponsivo = document.getElementById("menu-reponsivo");
     const menu = document.getElementById("menu");
-    if(menu.style.display === "none"){
-        menu.style.display = "flex"
-        menuResponsivo.style.display = "none"
-    }else{
-         menu.style.display = "none"
-        menuResponsivo.style.display = "block"
+
+    if (menu.style.display === "none" || !menu.style.display) {
+        menu.style.display = "flex";
+        menu.classList.remove('close-animation');
+        menu.classList.add('open-animation');
+        menuResponsivo.style.display = "none";
+        menu.addEventListener('animationend', function() {
+            menu.classList.remove('open-animation');
+            menu.classList.add('open');
+        }, { once: true });
+    } else {
+        menu.classList.remove('open-animation');
+        menu.classList.add('close-animation');
+        menuResponsivo.style.display = "block";
+        menu.addEventListener('animationend', function() {
+            menu.style.display = 'none';
+            menu.classList.remove('close-animation');
+            menu.classList.remove('open');
+        }, { once: true });
     }
 }
+

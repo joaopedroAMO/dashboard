@@ -651,10 +651,44 @@ form{
         position: fixed;
         top: 0;
         left: 0;
-        height: 100vh;
+        height: 100%;
         z-index: 98;
         border-radius: 0px 20px 20px 0px;
         padding-top: 30px;
+        overflow: hidden;
+        transition: 0.3s ease;
+        transform: translateX(-100%);
+    }
+
+    .menu.open {
+        display: block;
+        transform: translateX(0);
+    }
+    
+    @keyframes slideIn {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+    
+    .menu.open-animation {
+        animation: slideIn 0.3s forwards;
+    }
+    
+    .menu.close-animation {
+        animation: slideOut 0.3s forwards;
     }
 
     #closeResposiveMenu{
