@@ -1,7 +1,10 @@
+
+
 function handleCadastro(event) {
     event.preventDefault();  // Previna a submissão do formulário
 
     const userNameInput = document.getElementById("username").value;
+
     if (userNameInput.trim() === "") {
         alert("Por favor, preencha o nome de usuário.");
         return;
@@ -9,21 +12,26 @@ function handleCadastro(event) {
 
     const fileInput = document.getElementById('profile-picture-input');
     const file = fileInput.files[0];
-    if (!file) {
-        alert("Por favor, selecione uma imagem.");
-        return;
-    }
 
-    const reader = new FileReader();
-    reader.onload = function(e) {
+    if (file) {
+        const reader = new FileReader();
+         reader.onload = function(e) {
         document.getElementById("profile-picture").src = e.target.result;
         document.getElementById("user-img").src = e.target.result;
         document.getElementById("usuario-img").src = e.target.result;
+        cadastrar();
+        };
+        reader.readAsDataURL(file);
+    }
+    else{
         document.getElementById("name").textContent = userNameInput;
         document.getElementById("nome").textContent = userNameInput;
         cadastrar();
-    };
-    reader.readAsDataURL(file);
+    }
+
+    
+
+    
 }
 
 function cadastrar() {
@@ -55,6 +63,8 @@ function openLogoutContainer(){
 
 function image(event) {
     const userNameInput = document.getElementById("username").value;
+    const userHabilidadeInput = document.getElementById("userHabilidade").value;
+    const userHabilidade = document.getElementById("user-habilidade");
     const username = document.getElementById("name");
     const username2 = document.getElementById("nome");
     const userImg = document.getElementById("user-img");
@@ -69,6 +79,7 @@ function image(event) {
             userImg2.src = e.target.result;
             username.textContent = userNameInput;
             username2.textContent = userNameInput;
+            userHabilidade.textContent = userHabilidadeInput;
         };
         reader.readAsDataURL(file);
     }

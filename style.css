@@ -619,6 +619,11 @@ form{
     font-weight: bold;
 }
 
+.dropdown-container{
+    display: flex;
+    flex-direction: column;
+}
+
 /* reponssivo */
 @media (max-width: 768px){
     .menu{
