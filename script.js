@@ -4,14 +4,26 @@ function handleCadastro(event) {
     event.preventDefault();  // Previna a submissão do formulário
 
     const userNameInput = document.getElementById("username").value;
+    const username = document.getElementById("name");
+    const username2 = document.getElementById("nome");
+    
+    const fileInput = document.getElementById('profile-picture-input');
+    const file = fileInput.files[0];
+    const noImgInfos = document.getElementById("content-infos-img");
+    const noImgNav = document.getElementById("content-nav-img");
+
+    const userHabilidadeInput = document.getElementById("userHabilidade").value;
+    const userHabilidade = document.getElementById("user-habilidade");
 
     if (userNameInput.trim() === "") {
         alert("Por favor, preencha o nome de usuário.");
         return;
     }
-
-    const fileInput = document.getElementById('profile-picture-input');
-    const file = fileInput.files[0];
+    if(userHabilidadeInput.trim() != ""){
+        username.textContent = userNameInput;
+        username2.textContent = userNameInput;
+        cadastrar();
+    }
 
     if (file) {
         const reader = new FileReader();
@@ -23,15 +35,19 @@ function handleCadastro(event) {
         };
         reader.readAsDataURL(file);
     }
-    else{
-        document.getElementById("name").textContent = userNameInput;
-        document.getElementById("nome").textContent = userNameInput;
+    if(!file){
+        noImgInfos.style.backgroundImage = "url('./img/user.png')";
+        noImgNav.style.backgroundImage = "url('./img/user.png')";
+    }
+    if(userHabilidadeInput === ""){
+        alert("Por favor, escolha uma habilidade");
+        return;
+    }
+    if(userHabilidade != ""){
+        userHabilidade.textContent = userHabilidadeInput;
         cadastrar();
     }
 
-    
-
-    
 }
 
 function cadastrar() {
@@ -62,13 +78,9 @@ function openLogoutContainer(){
 
 
 function image(event) {
-    const userNameInput = document.getElementById("username").value;
-    const userHabilidadeInput = document.getElementById("userHabilidade").value;
-    const userHabilidade = document.getElementById("user-habilidade");
-    const username = document.getElementById("name");
-    const username2 = document.getElementById("nome");
     const userImg = document.getElementById("user-img");
     const userImg2 = document.getElementById("usuario-img");
+
     const file = event.target.files[0];
 
     if (file) {
@@ -77,9 +89,6 @@ function image(event) {
             document.getElementById("profile-picture").src = e.target.result;
             userImg.src = e.target.result;
             userImg2.src = e.target.result;
-            username.textContent = userNameInput;
-            username2.textContent = userNameInput;
-            userHabilidade.textContent = userHabilidadeInput;
         };
         reader.readAsDataURL(file);
     }
