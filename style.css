@@ -224,6 +224,10 @@ nav > p{
     transition: .2s;
 }
 
+.up > ul > li > img{
+    width: 41%;
+}
+
 .up > ul > li:hover{
     box-shadow: none;
 }
@@ -702,7 +706,19 @@ form{
         gap: 10px;
     }
 
-    .mid > ul > li > svg{
+    .up > ul > li > img{
         width: 100%;
+    }
+
+    .up > ul > li > .titles > h1{
+        font-size: medium;
+    }
+
+    .mid > ul > li > p{
+        font-size: x-small;
+    } 
+    
+    .mid > ul > li svg{
+        width: 85%;
     }
 }
