@@ -275,7 +275,7 @@
     </div>
 
     <div class="cadastro" id="cadastrar">
-        <h1>Cadastro de Usuário</h1>
+        <h1>Cadastro</h1>
         <form id="registration-form">
             <input type="file" id="profile-picture-input" accept="image/*" required>
             <label for="profile-picture-input" class="img-content">
@@ -295,9 +295,10 @@
                     <option value="Disigner">Disigner</option>
                 </select>
             </div>
+            
+            <textarea name="biografiaInput" id="biografiaInput" placeholder="Escreva sua biografia" maxlength="100"></textarea>
     
-    
-            <button type="button" onclick="handleCadastro(event)" id="cadastrar-button">Cadastrar</button>
+            <button type="button" onclick="handleCadastro(event)" id="cadastrar-button">Entrar</button>
         </form>
     </div>
 </body>
