@@ -1,7 +1,7 @@
-
+document.getElementById('profile-picture-input').addEventListener('change', image);
 
 function handleCadastro(event) {
-    event.preventDefault();  // Previna a submissão do formulário
+    event.preventDefault();  // Prevent form submission
 
     const userNameInput = document.getElementById("username").value;
     const username = document.getElementById("name");
@@ -19,36 +19,34 @@ function handleCadastro(event) {
         alert("Por favor, preencha o nome de usuário.");
         return;
     }
-    if(userHabilidadeInput.trim() != ""){
-        username.textContent = userNameInput;
-        username2.textContent = userNameInput;
-        cadastrar();
+    if (userHabilidadeInput.trim() === "") {
+        alert("Por favor, escolha uma habilidade.");
+        return;
     }
 
+    // Update username
+    username.textContent = userNameInput;
+    username2.textContent = userNameInput;
+
+    // Update profile picture
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
-        document.getElementById("profile-picture").src = e.target.result;
-
-        document.getElementById("user-img").src = e.target.result;
-        document.getElementById("usuario-img").src = e.target.result;
-        cadastrar();
+            document.getElementById("profile-picture").src = e.target.result;
+            document.getElementById("user-img").src = e.target.result;
+            document.getElementById("usuario-img").src = e.target.result;
         };
         reader.readAsDataURL(file);
-    }
-    if(!file){
+    } else {
         noImgInfos.style.backgroundImage = "url('./img/user.png')";
         noImgNav.style.backgroundImage = "url('./img/user.png')";
     }
-    if(userHabilidadeInput === ""){
-        alert("Por favor, escolha uma habilidade");
-        return;
-    }
-    if(userHabilidade != ""){
-        userHabilidade.textContent = userHabilidadeInput;
-        cadastrar();
-    }
 
+    // Update user skill
+    userHabilidade.textContent = userHabilidadeInput;
+
+    // Call the cadastrar function to finalize
+    cadastrar();
 }
 
 function cadastrar() {
@@ -68,15 +66,10 @@ function cadastrar() {
     }
 }
 
-function openLogoutContainer(){
+function openLogoutContainer() {
     const containerconfirm = document.getElementById("confirmContainer");
-    if(containerconfirm.style.display == "none"){
-        containerconfirm.style.display = "flex";
-    }else{
-        containerconfirm.style.display = "none";
-    }
+    containerconfirm.style.display = containerconfirm.style.display === "none" ? "flex" : "none";
 }
-
 
 function image(event) {
     const userImg = document.getElementById("user-img");
@@ -94,7 +87,6 @@ function image(event) {
         reader.readAsDataURL(file);
     }
 }
-document.getElementById('profile-picture-input').addEventListener('change', image);
 
 function abrirMenu() {
     const menuResponsivo = document.getElementById("menu-reponsivo");
@@ -121,4 +113,3 @@ function abrirMenu() {
         }, { once: true });
     }
 }
-

@@ -402,6 +402,12 @@ tr {
     cursor: pointer;
 }
 
+.text{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 .infos-resumidas:hover{
     box-shadow: none;
 }
@@ -587,6 +593,7 @@ form{
     border-radius: 10px;
     gap: 10px;
     background-color: #f2f2f2;
+    font-size: small;
 }
 
 .img-content {
@@ -616,6 +623,8 @@ form{
     padding: 10px;
     transition: .2s ease-in-out;
     cursor: pointer;
+    margin-top: -5px;
+    margin-bottom: 5px;
 }
 
 #username:focus{
@@ -637,23 +646,12 @@ form{
     gap: 5px;
     width: 100%;
     text-align: center;
+    margin-bottom: 5px;
 }
 
 select{
     border-radius: 50px;
     padding: 5px;
-}
-
-#biografiaInput{
-    padding: 10px;
-    min-width: 210px;
-    max-width: 210px;
-    max-height: 110px;
-    min-height: 110px;
-}
-
-textarea{
-    border-radius: 8px;
 }
 
 /* reponssivo */
@@ -767,5 +765,9 @@ textarea{
     
     .mid > ul > li svg{
         width: 85%;
+    }
+
+    .mid > ul > li:first-child{
+        display: none;
     }
 }
